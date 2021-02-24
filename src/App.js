@@ -51,9 +51,9 @@ function App() {
                             <Card.Text>
                                 {item.Executivo}
                             </Card.Text>
-                            <Card.Footer><a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone
-                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")}><FaWhatsapp color="green"
-                                                                                                    size="22px"/></a> {item.Telefone}
+                            <Card.Footer><a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
+                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank">
+                                <FaWhatsapp color="green" size="22px"/></a> <a href={"tel:" + item.Telefone}>{item.Telefone}</a>
                             </Card.Footer>
                         </Card.Body>
                     </Card>
