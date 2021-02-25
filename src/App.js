@@ -31,7 +31,7 @@ function App() {
     }, []);
 
     function maskFone(Telefone) {
-        const regex = /^\(?([0-9]{2})\)?([0-9]{4,5})\-?([0-9]{4})$/mg;
+        const regex = /^\(?([0-9]{2})\)?([0-9]{4,5})-?([0-9]{4})$/mg;
         const subst = `($1)$2-$3`;
         const Tel2 = Telefone.replace(regex, subst);
         return Tel2;
@@ -40,14 +40,10 @@ function App() {
 
     return (
         <>
-            <Form>
-                <Form.Group>
-                    <Form.Control className="border border-primary rounded-pill mb-5" ref={inputRef} size="lg" type="text"
-                                  placeholder="Pesquise uma Base ou um Executivo"
-                                  onChange={onInputChanged}/>
-                </Form.Group>
-            </Form>
 
+            <Form.Control className="border border-primary rounded-pill mb-5" ref={inputRef} size="lg" type="text"
+                          placeholder="Pesquise uma Base ou um Executivo"
+                          onChange={onInputChanged}/>
             <CardColumns>
                 {filtered.map((item, i) => (
 
@@ -63,7 +59,7 @@ function App() {
 
                         <Card.Footer className="container d-flex justify-content-center">
                             <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
-                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank"
+                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank" rel="noreferrer"
                                className="mr-3 align-self-center">
                                 <FaWhatsapp className="text-info" size="30px"/></a>
 
