@@ -52,7 +52,7 @@ function App() {
                                 {item.Base}
                             </Card.Title>
                             <Card.Text>
-                                {item.Executivo}
+                                {item.Executivo} - {item.Cargo}
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer className="d-flex justify-content-around">
