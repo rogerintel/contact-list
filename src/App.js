@@ -41,7 +41,7 @@ function App() {
     return (
         <Form style={{backgroundColor: 'rgba(229, 228, 235, 1)'}}>
             <Form.Control  className="border border-primary rounded-pill mb-sm-5" ref={inputRef} size="lg" type="text"
-                          placeholder="Pesquise uma Base ou um Executivo"
+                          placeholder="Pesquisar Base ou Executivo"
                           onChange={onInputChanged}/>
             <CardColumns className="m-2">
                 {filtered.map((item, i) => (
