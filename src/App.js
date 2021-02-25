@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import './App.css';
 import Tabletop from 'tabletop'
-import {Card, CardColumns, Form} from "react-bootstrap";
+import {Card, CardColumns, Container, Form} from "react-bootstrap";
 import {FaWhatsapp} from "react-icons/all";
 
 
@@ -11,7 +11,6 @@ function App() {
     const inputRef = useRef(null);
 
     const onInputChanged = () => {
-        console.log(process.env.REACT_APP_SPREEDSHEET_ID)
         setFiltered(data.filter(item => (
             item.Base.toLowerCase().includes(inputRef.current.value.toLowerCase()) ||
             item.Executivo.toLowerCase().includes(inputRef.current.value.toLowerCase())
@@ -31,14 +30,23 @@ function App() {
             .catch((err) => console.warn(err));
     }, []);
 
+    function maskFone(Telefone) {
+        const regex = /^\(?([0-9]{2})\)?([0-9]{4,5})\-?([0-9]{4})$/mg;
+        const subst = `($1)$2-$3`;
+        const Tel2 = Telefone.replace(regex, subst);
+        return Tel2;
+
+    }
+
     return (
         <>
             <Form>
                 <Form.Group>
-                    <Form.Control ref={inputRef} size="lg" type="text" placeholder="Pesquise uma Base ou um Executivo"
+                    <Form.Control className="border border-primary rounded-pill" ref={inputRef} size="lg" type="text"
+                                  placeholder="Pesquise uma Base ou um Executivo"
                                   onChange={onInputChanged}/>
                 </Form.Group>
-                <br />
+                <br/>
             </Form>
 
             <CardColumns>
@@ -53,13 +61,15 @@ function App() {
                                 {item.Executivo}
                             </Card.Text>
                         </Card.Body>
-                        <Card.Footer>
-                                <pre>
+
+                        <Card.Footer className="container d-flex justify-content-center">
                                 <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
-                                + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank">
-                                <FaWhatsapp color="green" size="22px"/></a>  <a href={"tel:" + item.Telefone}>{item.Telefone}</a>
-                                    </pre>
+                                + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank" className="mr-3 align-self-center">
+                                    <FaWhatsapp className="text-info" size="30px"/></a>
+
+                                    <a href={"tel:" + item.Telefone} className="btn btn-outline-secondary">{maskFone(item.Telefone)}</a>
                         </Card.Footer>
+
                     </Card>
                 ))}
             </CardColumns>
