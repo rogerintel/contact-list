@@ -42,11 +42,10 @@ function App() {
         <>
             <Form>
                 <Form.Group>
-                    <Form.Control className="border border-primary rounded-pill" ref={inputRef} size="lg" type="text"
+                    <Form.Control className="border border-primary rounded-pill mb-5" ref={inputRef} size="lg" type="text"
                                   placeholder="Pesquise uma Base ou um Executivo"
                                   onChange={onInputChanged}/>
                 </Form.Group>
-                <br/>
             </Form>
 
             <CardColumns>
