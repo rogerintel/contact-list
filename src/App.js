@@ -43,7 +43,7 @@ function App() {
             <Form.Control  className="border border-primary rounded-pill mb-sm-5" ref={inputRef} size="lg" type="text"
                           placeholder="Pesquise uma Base ou um Executivo"
                           onChange={onInputChanged}/>
-            <CardColumns className="m-2 mb-md-5">
+            <CardColumns className="m-2">
                 {filtered.map((item, i) => (
 
                     <Card key={i} bg="light" text="dark" border="primary">
