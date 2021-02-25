@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import './App.css';
 import Tabletop from 'tabletop'
-import {Card, CardColumns, Container, Form} from "react-bootstrap";
+import {Card, CardColumns, Form} from "react-bootstrap";
 import {FaWhatsapp} from "react-icons/all";
 
 
@@ -63,11 +63,13 @@ function App() {
                         </Card.Body>
 
                         <Card.Footer className="container d-flex justify-content-center">
-                                <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
-                                + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank" className="mr-3 align-self-center">
-                                    <FaWhatsapp className="text-info" size="30px"/></a>
+                            <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
+                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank"
+                               className="mr-3 align-self-center">
+                                <FaWhatsapp className="text-info" size="30px"/></a>
 
-                                    <a href={"tel:" + item.Telefone} className="btn btn-outline-secondary">{maskFone(item.Telefone)}</a>
+                            <a href={"tel:" + item.Telefone}
+                               className="btn btn-outline-secondary">{maskFone(item.Telefone)}</a>
                         </Card.Footer>
 
                     </Card>
