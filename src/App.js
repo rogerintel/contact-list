@@ -38,6 +38,7 @@ function App() {
                     <Form.Control ref={inputRef} size="lg" type="text" placeholder="Pesquise uma Base ou um Executivo"
                                   onChange={onInputChanged}/>
                 </Form.Group>
+                <br />
             </Form>
 
             <CardColumns>
@@ -51,11 +52,14 @@ function App() {
                             <Card.Text>
                                 {item.Executivo}
                             </Card.Text>
-                            <Card.Footer><a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
-                            + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank">
-                                <FaWhatsapp color="green" size="22px"/></a> <a href={"tel:" + item.Telefone}>{item.Telefone}</a>
-                            </Card.Footer>
                         </Card.Body>
+                        <Card.Footer>
+                                <pre>
+                                <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
+                                + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank">
+                                <FaWhatsapp color="green" size="22px"/></a>  <a href={"tel:" + item.Telefone}>{item.Telefone}</a>
+                                    </pre>
+                        </Card.Footer>
                     </Card>
                 ))}
             </CardColumns>
