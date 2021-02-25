@@ -32,7 +32,7 @@ function App() {
 
     function maskFone(Telefone) {
         const regex = /^\(?([0-9]{2})\)?([0-9]{4,5})-?([0-9]{4})$/mg;
-        const subst = `($1)$2-$3`;
+        const subst = `($1) $2-$3`;
         const Tel2 = Telefone.replace(regex, subst);
         return Tel2;
 
@@ -40,26 +40,25 @@ function App() {
 
     return (
         <Form style={{backgroundColor: 'rgba(229, 228, 235, 1)'}}>
-            <Form.Control  className="border border-primary rounded-pill mb-5" ref={inputRef} size="lg" type="text"
+            <Form.Control  className="border border-primary rounded-pill mb-sm-5" ref={inputRef} size="lg" type="text"
                           placeholder="Pesquise uma Base ou um Executivo"
                           onChange={onInputChanged}/>
-            <CardColumns className="m-2">
+            <CardColumns className="m-2 mb-md-5">
                 {filtered.map((item, i) => (
 
                     <Card key={i} bg="light" text="dark" border="primary">
                         <Card.Body>
                             <Card.Title>
-                                Base: {item.Base}
+                                {item.Base}
                             </Card.Title>
                             <Card.Text>
                                 {item.Executivo}
                             </Card.Text>
                         </Card.Body>
-
-                        <Card.Footer className="container d-flex justify-content-center">
+                        <Card.Footer className="d-flex justify-content-around">
                             <a href={"https://api.whatsapp.com/send?phone=55" + item.Telefone + "&text="
                             + encodeURI("Olá, " + item.Executivo + " pode me ajudar?")} target="_blank" rel="noreferrer"
-                               className="mr-3 align-self-center">
+                               >
                                 <FaWhatsapp className="text-info" size="30px"/></a>
 
                             <a href={"tel:" + item.Telefone}
